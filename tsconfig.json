@@ -8,11 +8,7 @@
     "module": "commonjs",
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/data/*": ["data/*"],
-      "@/layouts/*": ["layouts/*"],
-      "@/lib/*": ["lib/*"],
-      "@/css/*": ["css/*"]
+      "@/*": ["./*"]
     },
     "resolveJsonModule": true,
     "strict": true,
@@ -23,17 +19,6 @@
     "moduleResolution": "node",
     "isolatedModules": true
   },
-  "include": [
-    "components",
-    "layouts",
-    "lib",
-    "pages",
-    "scripts",
-    "next-env.d.ts",
-    "next.config.js",
-    "prettier.config.js",
-    "postcss.config.js",
-    "tailwind.config.js"
-  ],
+  "include": ["**/*"],
   "exclude": ["node_modules"]
 }
