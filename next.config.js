@@ -8,7 +8,7 @@ module.exports = withBundleAnalyzer({
     defaultLocale: 'fr',
     locales: ['en', 'fr', 'nl'],
   },
-  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
@@ -31,14 +31,14 @@ module.exports = withBundleAnalyzer({
       use: ['@svgr/webpack'],
     })
 
-    if (!dev && !isServer) {
-      // Replace React with Preact only in client production build
-      Object.assign(config.resolve.alias, {
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
-      })
-    }
+    // if (!dev && !isServer) {
+    //   // Replace React with Preact only in client production build
+    //   Object.assign(config.resolve.alias, {
+    //     react: 'preact/compat',
+    //     'react-dom/test-utils': 'preact/test-utils',
+    //     'react-dom': 'preact/compat',
+    //   })
+    // }
 
     return config
   },
