@@ -1,11 +1,9 @@
-import '@/css/tailwind.css'
-
-import { ThemeProvider } from 'next-themes'
-import { DefaultSeo } from 'next-seo'
-import Head from 'next/head'
-
-import { SEO } from '@/components/SEO'
 import LayoutWrapper from '@/components/LayoutWrapper'
+import { SEO } from '@/components/SEO'
+import '@/css/tailwind.css'
+import { DefaultSeo } from 'next-seo'
+import { ThemeProvider } from 'next-themes'
+import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
   return (
