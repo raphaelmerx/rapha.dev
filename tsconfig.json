@@ -14,8 +14,8 @@
     "strict": true,
     "skipLibCheck": true,
     "target": "es2019",
-    "allowJs": true,
-    "noEmit": false,
+    // "allowJs": true,
+    // "noEmit": false,
     "moduleResolution": "node",
     "isolatedModules": true
   },

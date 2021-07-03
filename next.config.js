@@ -6,7 +6,7 @@ module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   i18n: {
     defaultLocale: 'fr',
-    locales: ['en', 'fr', 'nl'],
+    locales: ['en', 'fr'],
   },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   eslint: {

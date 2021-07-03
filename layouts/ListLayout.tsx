@@ -4,9 +4,23 @@ import siteMetadata from '@/data/siteMetadata'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 
+import { postsType, paginationType } from '@/types/blog'
+
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 
-export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }) {
+type ListLayoutType = {
+  posts: postsType
+  title: string
+  initialDisplayPosts: postsType
+  pagination: paginationType
+}
+
+export default function ListLayout({
+  posts,
+  title,
+  initialDisplayPosts = [],
+  pagination,
+}: ListLayoutType) {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
     const searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(' ')
@@ -59,6 +73,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                     <dt className="sr-only">Published on</dt>
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                       <time dateTime={date}>
+                        {/* @Todo: change siteMetadata.locale to local  */}
                         {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                       </time>
                     </dd>

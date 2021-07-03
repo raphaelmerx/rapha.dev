@@ -1,7 +1,8 @@
 import { getAllFilesFrontMatter } from '@/lib/mdx'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata.json'
 import ListLayout from '@/layouts/ListLayout'
 import { PageSeo } from '@/components/SEO'
+import { postsType, paginationType } from '@/types/blog'
 
 export const POSTS_PER_PAGE = 10
 
@@ -11,12 +12,22 @@ export async function getStaticProps() {
   const pagination = {
     currentPage: 1,
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
-  }
+  } as paginationType
+  // console.log('Blog posts', posts)
+  // console.log('Blog type posts', typeof posts)
+  // console.log('Blog initial', initialDisplayPosts)
+  // console.log('Blog type initial', typeof initialDisplayPosts)
 
   return { props: { initialDisplayPosts, posts, pagination } }
 }
 
-export default function Blog({ posts, initialDisplayPosts, pagination }) {
+type BlogProp = {
+  posts: postsType
+  initialDisplayPosts: postsType
+  pagination: paginationType
+}
+
+export default function Blog({ posts, initialDisplayPosts, pagination }: BlogProp) {
   return (
     <>
       <PageSeo
