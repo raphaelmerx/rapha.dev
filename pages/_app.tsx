@@ -3,9 +3,10 @@ import { SEO } from '@/components/SEO'
 import '@/css/tailwind.css'
 import { DefaultSeo } from 'next-seo'
 import { ThemeProvider } from 'next-themes'
+import { AppProps } from 'next/dist/next-server/lib/router/router'
 import Head from 'next/head'
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
       <Head>
