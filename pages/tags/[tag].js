@@ -10,15 +10,20 @@ import path from 'path'
 
 const root = process.cwd()
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const tags = await getAllTags('blog')
 
-  return {
-    paths: Object.keys(tags).map((tag) => ({
+  const path = (locale) =>
+    Object.keys(tags).map((tag) => ({
       params: {
         tag,
       },
-    })),
+      locale,
+    }))
+  const paths = locales.map((locale) => path(locale)).flat()
+
+  return {
+    paths: paths,
     fallback: false,
   }
 }
