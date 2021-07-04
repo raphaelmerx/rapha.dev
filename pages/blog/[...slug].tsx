@@ -18,7 +18,16 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+type BlogProps = {
+  params: {
+    slug: string[]
+  }
+}
+
+export async function getStaticProps({ params }: BlogProps) {
+  console.log('slug', params)
+  console.log('slug type', typeof params)
+
   const allPosts = await getAllFilesFrontMatter('blog')
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'))
   const prev = allPosts[postIndex + 1] || null
@@ -32,8 +41,11 @@ export async function getStaticProps({ params }) {
   return { props: { post, prev, next } }
 }
 
-export default function Blog({ post, prev, next }) {
+export default function Blog({ post, prev, next }: BlogProps) {
   const { mdxSource, frontMatter } = post
+  console.log('next', next)
+  console.log('prev', prev)
+  console.log('post', post)
 
   return (
     <>

@@ -17,7 +17,9 @@
     // "allowJs": true,
     // "noEmit": false,
     "moduleResolution": "node",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "allowJs": true,
+    "noEmit": true
   },
   "include": ["**/*"],
   "exclude": ["node_modules"]

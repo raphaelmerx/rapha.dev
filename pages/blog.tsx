@@ -21,13 +21,13 @@ export async function getStaticProps() {
   return { props: { initialDisplayPosts, posts, pagination } }
 }
 
-type BlogProp = {
+type BlogProps = {
   posts: postsType
   initialDisplayPosts: postsType
   pagination: paginationType
 }
 
-export default function Blog({ posts, initialDisplayPosts, pagination }: BlogProp) {
+export default function Blog({ posts, initialDisplayPosts, pagination }: BlogProps) {
   return (
     <>
       <PageSeo

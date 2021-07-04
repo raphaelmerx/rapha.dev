@@ -1,8 +1,10 @@
 import Link from '@/components/Link'
 import { PageSeo } from '@/components/SEO'
 import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata.json'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+
+import { postsType } from '@/types/blog'
 
 const MAX_DISPLAY = 5
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
@@ -13,7 +15,7 @@ export async function getStaticProps() {
   return { props: { posts } }
 }
 
-export default function Home({ posts }) {
+export default function Home({ posts }: { posts: postsType }) {
   return (
     <>
       <PageSeo
@@ -42,6 +44,7 @@ export default function Home({ posts }) {
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <time dateTime={date}>
+                          {/* @todo: Check type of postDateTemplate */}
                           {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                         </time>
                       </dd>

@@ -1,6 +1,6 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata.json'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 
@@ -11,8 +11,8 @@ const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 type ListLayoutType = {
   posts: postsType
   title: string
-  initialDisplayPosts: postsType
-  pagination: paginationType
+  initialDisplayPosts?: postsType
+  pagination?: paginationType
 }
 
 export default function ListLayout({

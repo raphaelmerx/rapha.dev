@@ -14,3 +14,5 @@ export type paginationType = {
   currentPage: number
   totalPages: number
 }
+
+export type tagsType = Record<string, number>

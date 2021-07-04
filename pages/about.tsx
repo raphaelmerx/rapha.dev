@@ -1,4 +1,4 @@
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata.json'
 import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
 import { PageSeo } from '@/components/SEO'
