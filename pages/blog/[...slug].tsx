@@ -6,10 +6,12 @@ import PostLayout from '@/layouts/PostLayout'
 import generateRss from '@/lib/generate-rss'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
 
+import { postType, postWithMdxType } from '@/types/blog'
+
 export async function getStaticPaths() {
   const posts = getFiles('blog')
   return {
-    paths: posts.map((p) => ({
+    paths: posts.map((p: postType) => ({
       params: {
         slug: formatSlug(p).split('/'),
       },
@@ -41,7 +43,15 @@ export async function getStaticProps({ params }: BlogProps) {
   return { props: { post, prev, next } }
 }
 
-export default function Blog({ post, prev, next }: BlogProps) {
+export default function Blog({
+  post,
+  prev,
+  next,
+}: {
+  post: postWithMdxType
+  prev: postType
+  next: postType
+}) {
   const { mdxSource, frontMatter } = post
   console.log('next', next)
   console.log('prev', prev)
