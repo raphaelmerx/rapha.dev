@@ -37,7 +37,7 @@ const LayoutWrapper = ({ children }: LayoutWrapperProps) => {
             <div className="hidden sm:block">
               {headerNavLinks.map((link) => (
                 <Link
-                  key={link.title}
+                  key={link.title as string}
                   href={link.href}
                   className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100"
                 >

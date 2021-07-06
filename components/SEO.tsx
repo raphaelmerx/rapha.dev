@@ -1,6 +1,8 @@
 import { NextSeo, ArticleJsonLd } from 'next-seo'
 import siteMetadata from '@/data/siteMetadata.json'
 
+import { imageType, imagesType } from '@/types/blog'
+
 export const SEO = {
   title: siteMetadata.title,
   description: siteMetadata.description,
@@ -32,7 +34,15 @@ export const SEO = {
   ],
 }
 
-export const PageSeo = ({ title, description, url }) => {
+export const PageSeo = ({
+  title,
+  description,
+  url,
+}: {
+  title: string
+  description: string
+  url: string
+}) => {
   return (
     <NextSeo
       title={`${title} – ${siteMetadata.title}`}
@@ -47,7 +57,17 @@ export const PageSeo = ({ title, description, url }) => {
   )
 }
 
-export const BlogSeo = ({ title, summary, date, lastmod, url, tags, images = [] }) => {
+type blogSeoType = {
+  title: string
+  summary: string
+  date: string
+  url: string
+  tags: string[]
+  lastmod?: string
+  images?: string[]
+}
+
+export const BlogSeo = ({ title, summary, date, lastmod, url, tags, images = [] }: blogSeoType) => {
   const publishedAt = new Date(date).toISOString()
   const modifiedAt = new Date(lastmod || date).toISOString()
   let imagesArr =
@@ -57,7 +77,7 @@ export const BlogSeo = ({ title, summary, date, lastmod, url, tags, images = [] 
       ? [images]
       : images
 
-  const featuredImages = imagesArr.map((img) => {
+  const featuredImages = imagesArr.map((img: string) => {
     return {
       url: `${siteMetadata.siteUrl}${img}`,
       alt: title,
@@ -95,8 +115,9 @@ export const BlogSeo = ({ title, summary, date, lastmod, url, tags, images = [] 
         dateModified={modifiedAt}
         datePublished={publishedAt}
         description={summary}
-        images={featuredImages}
+        images={featuredImages.map((e) => e.url)} // change because of type incompatibility
         publisherName={siteMetadata.author}
+        publisherLogo={siteMetadata.image} // added image
         title={title}
         url={url}
       />

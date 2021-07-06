@@ -27,3 +27,12 @@ export type postWithMdxType = {
 }
 
 export type tagsType = Record<string, number>
+
+export type imageType = {
+  url: string
+  alt?: string
+  width?: number
+  height?: number
+}
+
+export type imagesType = imageType[]

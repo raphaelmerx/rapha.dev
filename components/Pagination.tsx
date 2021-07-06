@@ -1,9 +1,9 @@
 import Link from '@/components/Link'
+import { paginationType } from '@/types/blog'
 
-export default function Pagination({ totalPages, currentPage }) {
-  const prevPage = parseInt(currentPage) - 1 > 0
-  const nextPage = parseInt(currentPage) + 1 <= parseInt(totalPages)
-
+export default function Pagination({ totalPages, currentPage }: paginationType) {
+  const prevPage = currentPage - 1 > 0
+  const nextPage = currentPage + 1 <= totalPages
   return (
     <div className="pt-6 pb-8 space-y-2 md:space-y-5">
       <nav className="flex justify-between">
