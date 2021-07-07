@@ -13,10 +13,6 @@ export async function getStaticProps() {
     currentPage: 1,
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
   } as paginationType
-  // console.log('Blog posts', posts)
-  // console.log('Blog type posts', typeof posts)
-  // console.log('Blog initial', initialDisplayPosts)
-  // console.log('Blog type initial', typeof initialDisplayPosts)
 
   return { props: { initialDisplayPosts, posts, pagination } }
 }
