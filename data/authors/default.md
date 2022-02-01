@@ -1,5 +1,5 @@
 ---
-name: Tails Azimuth
+name: Raphaël Merx
 avatar: /static/images/avatar.png
 occupation: Professor of Atmospheric Science
 company: Stanford University
