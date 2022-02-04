@@ -12,14 +12,21 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@mailchimp/mailchimp_marketing": "^3.0.58",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/lab": "^5.0.0-alpha.67",
+    "@mui/material": "^5.4.0",
     "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/typography": "^0.4.0",
     "autoprefixer": "^10.2.5",
     "esbuild": "^0.12.15",
     "github-slugger": "^1.3.0",
+    "goober": "^2.1.7",
     "gray-matter": "^4.0.2",
     "image-size": "1.0.0",
+    "line-awesome": "^1.3.0",
     "mdx-bundler": "^6.0.1",
     "next": "11.1.2",
     "next-themes": "^0.0.14",
@@ -43,6 +50,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "11.1.2",
     "@svgr/webpack": "^5.5.0",
+    "@types/react": "^17.0.38",
     "cross-env": "^7.0.3",
     "dedent": "^0.7.0",
     "eslint": "^7.29.0",
@@ -56,7 +64,8 @@
     "inquirer": "^8.1.1",
     "lint-staged": "^11.0.0",
     "next-remote-watch": "^1.0.0",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "typescript": "^4.5.5"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [

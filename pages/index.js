@@ -5,6 +5,27 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
 
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
+import Timeline from '@mui/lab/Timeline'
+import TimelineItem from '@mui/lab/TimelineItem'
+import TimelineSeparator from '@mui/lab/TimelineSeparator'
+import TimelineConnector from '@mui/lab/TimelineConnector'
+import TimelineContent from '@mui/lab/TimelineContent'
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
+import TimelineDot from '@mui/lab/TimelineDot'
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled'
+import CodeIcon from '@mui/icons-material/Code'
+import WorkIcon from '@mui/icons-material/Work'
+import CreateIcon from '@mui/icons-material/Create'
+import LaptopMacIcon from '@mui/icons-material/LaptopMac'
+import HotelIcon from '@mui/icons-material/Hotel'
+import RepeatIcon from '@mui/icons-material/Repeat'
+import Typography from '@mui/material/Typography'
+import { css } from 'goober'
+import { blue, green, red } from '@mui/material/colors'
+import { alpha } from '@mui/material/styles'
+
 import NewsletterForm from '@/components/NewsletterForm'
 
 const MAX_DISPLAY = 5
@@ -13,6 +34,67 @@ export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
 
   return { props: { posts } }
+}
+
+function Badge(props) {
+  const getContent = (type) => {
+    switch (type) {
+      case 'NewProject':
+        return 'Started working on a new project'
+      case 'Job':
+        return 'Started a new job'
+      case 'Blog':
+        return 'Wrote a Blog Post'
+      case 'Speaking':
+        return 'Spoke at an event'
+      default:
+        return 'coucou'
+    }
+  }
+  const getIcon = (type) => {
+    switch (type) {
+      case 'NewProject':
+        return 'la-code'
+      case 'Job':
+        return 'la-briefcase'
+      case 'Blog':
+        return 'la-pencil-alt'
+      case 'Speaking':
+        return 'la-microphone'
+      default:
+        return 'la-dog'
+    }
+  }
+  const getColor = (type) => {
+    switch (type) {
+      case 'NewProject':
+        return blue
+      case 'Job':
+        return blue
+      case 'Blog':
+        return red
+      case 'Speaking':
+        return green
+      default:
+        return red
+    }
+  }
+  const color = getColor(props.type)
+  const backgroundColor = alpha(getColor(props.type)[100], 0.1)
+  return (
+    <Box class="badge-container mw-100" className={badgeContainer}>
+      <Box
+        component="span"
+        style={{ color: color[500], backgroundColor: backgroundColor }}
+        sx={{ py: 0.5, px: 1.5, borderRadius: 0.5, fontWeight: 500 }}
+      >
+        <Box component="span" sx={{ mr: 1 }}>
+          <i className={'las ' + getIcon(props.type)}></i>
+        </Box>
+        {getContent(props.type)}
+      </Box>
+    </Box>
+  )
 }
 
 export default function Home({ posts }) {
@@ -28,74 +110,48 @@ export default function Home({ posts }) {
             {siteMetadata.description}
           </p>
         </div>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && 'No posts found.'}
+        <Timeline>
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
+            const { slug, date, title, summary, tags, type, link } = frontMatter
             return (
-              <li key={slug} className="py-12">
-                <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{formatDate(date)}</time>
-                      </dd>
-                    </dl>
-                    <div className="space-y-5 xl:col-span-3">
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            <Link
-                              href={`/blog/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
-                          </div>
-                        </div>
-                        <div className="prose text-gray-500 max-w-none dark:text-gray-400">
-                          {summary}
-                        </div>
-                      </div>
-                      <div className="text-base font-medium leading-6">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          aria-label={`Read "${title}"`}
-                        >
-                          Read more &rarr;
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </li>
+              <TimelineItem key={slug}>
+                <TimelineOppositeContent
+                  className={timelineOpposite}
+                  sx={{ m: 'auto 0' }}
+                  variant="body2"
+                >
+                  <time dateTime={date}>{formatDate(date)}</time>
+                </TimelineOppositeContent>
+                <TimelineSeparator>
+                  <TimelineConnector />
+                  <AccessTimeFilledIcon sx={{ fontSize: 14 }} />
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent sx={{ py: '12px', px: 2 }}>
+                  <Badge type={type}></Badge>
+                  <Typography variant="h6" component="span">
+                    <Link href={link ? link : `/blog/${slug}`}>{title}</Link>
+                  </Typography>
+                  <Typography>{summary}</Typography>
+                </TimelineContent>
+              </TimelineItem>
             )
           })}
-        </ul>
+        </Timeline>
       </div>
-      {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base font-medium leading-6">
-          <Link
-            href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="all posts"
-          >
-            All Posts &rarr;
-          </Link>
-        </div>
-      )}
-      {siteMetadata.newsletter.provider !== '' && (
+      {/* siteMetadata.newsletter.provider !== '' && (
         <div className="flex items-center justify-center pt-4">
           <NewsletterForm />
         </div>
-      )}
+      ) */}
     </>
   )
 }
+
+const timelineOpposite = css`
+  flex: 0.2;
+`
+
+const badgeContainer = css`
+  display: flex;
+`

@@ -1,9 +1,11 @@
 ---
-title: Introducing Multi-part Posts with Nested Routing
-date: '2021-05-02'
-tags: ['multi-author', 'next-js', 'feature']
+title: Balinese spell checker
+date: '2022-01-10'
+tags: ['language-tech', 'side-project']
 draft: false
-summary: 'The blog template supports posts in nested sub-folders. This can be used to group posts of similar content e.g. a multi-part course. This post is itself an example of a nested route!'
+summary: 'A webapp to fix the Balinese text spelling, mostly used to guess where to put spaces in text transliterated from the Balinese alphabet to the Latin alphabet. Built in partnership with the WikiPustaka community.'
+type: NewProject
+link: https://balinese-spell.netlify.app/
 ---
 
 # Nested Routes
