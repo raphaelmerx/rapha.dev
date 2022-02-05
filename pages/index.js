@@ -40,13 +40,13 @@ function Badge(props) {
   const getContent = (type) => {
     switch (type) {
       case 'NewProject':
-        return 'Started working on a new project'
+        return 'New Project update'
       case 'Job':
         return 'Started a new job'
       case 'Blog':
         return 'Wrote a Blog Post'
       case 'Speaking':
-        return 'Spoke at an event'
+        return 'Spoke at an Event'
       default:
         return 'coucou'
     }
@@ -121,7 +121,7 @@ function TimelineElement(props) {
       <TimelineContent sx={{ pb: '12px', pt: 0, px: 2, mb: 10, mt: -1 }}>
         <Badge type={type}></Badge>
         <Box sx={{ py: 1, display: { sm: 'none' } }}>{dateElement}</Box>
-        <Typography variant="h6" sx={{ my: 1, fontSize: 24 }}>
+        <Typography variant="h5" sx={{ my: 1, fontWeight: 700 }}>
           <Link href={link ? link : `/blog/${slug}`}>{title}</Link>
         </Typography>
         <Typography>{summary}</Typography>

@@ -3,7 +3,7 @@ title: Balinese spell checker
 date: '2022-01-10'
 tags: ['language-tech', 'side-project']
 draft: false
-summary: 'A webapp to fix the Balinese text spelling, mostly used to guess where to put spaces in text transliterated from the Balinese alphabet to the Latin alphabet. Built in partnership with the WikiPustaka community.'
+summary: 'A webapp to fix Balinese text spelling, built in partnership with the WikiPustaka (Balinese Wikisource) community. Can also guess where to put spaces in text transliterated from the Balinese alphabet to the Latin alphabet. '
 type: NewProject
 link: https://balinese-spell.netlify.app/
 ---
