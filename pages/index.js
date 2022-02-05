@@ -23,7 +23,7 @@ import HotelIcon from '@mui/icons-material/Hotel'
 import RepeatIcon from '@mui/icons-material/Repeat'
 import Typography from '@mui/material/Typography'
 import { css } from 'goober'
-import { blue, green, red } from '@mui/material/colors'
+import { blue, green, grey, red } from '@mui/material/colors'
 import { alpha } from '@mui/material/styles'
 
 import NewsletterForm from '@/components/NewsletterForm'
@@ -86,7 +86,7 @@ function Badge(props) {
       <Box
         component="span"
         style={{ color: color[500], backgroundColor: backgroundColor }}
-        sx={{ py: 0.5, px: 1.5, borderRadius: 0.5, fontWeight: 500 }}
+        sx={{ py: 0.5, px: 1.5, borderRadius: 1, fontWeight: 500, fontSize: 14 }}
       >
         <Box component="span" sx={{ mr: 1 }}>
           <i className={'las ' + getIcon(props.type)}></i>
@@ -94,6 +94,39 @@ function Badge(props) {
         {getContent(props.type)}
       </Box>
     </Box>
+  )
+}
+
+function TimelineElement(props) {
+  const { slug, date, title, summary, tags, type, link } = props.frontMatter
+
+  const dateElement = (
+    <Typography variant="caption">
+      <time dateTime={date}>{formatDate(date)}</time>
+    </Typography>
+  )
+  return (
+    <TimelineItem key={slug}>
+      <TimelineOppositeContent
+        style={{ flex: 0.2 }}
+        sx={{ py: 0, mt: -0.5, display: { xs: 'none', sm: 'block' } }}
+        variant="body2"
+      >
+        {dateElement}
+      </TimelineOppositeContent>
+      <TimelineSeparator>
+        <AccessTimeFilledIcon sx={{ fontSize: 14 }} />
+        <TimelineConnector />
+      </TimelineSeparator>
+      <TimelineContent sx={{ pb: '12px', pt: 0, px: 2, mb: 10, mt: -1 }}>
+        <Badge type={type}></Badge>
+        <Box sx={{ py: 1, display: { sm: 'none' } }}>{dateElement}</Box>
+        <Typography variant="h6" sx={{ my: 1, fontSize: 24 }}>
+          <Link href={link ? link : `/blog/${slug}`}>{title}</Link>
+        </Typography>
+        <Typography>{summary}</Typography>
+      </TimelineContent>
+    </TimelineItem>
   )
 }
 
@@ -110,33 +143,10 @@ export default function Home({ posts }) {
             {siteMetadata.description}
           </p>
         </div>
-        <Timeline>
-          {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, date, title, summary, tags, type, link } = frontMatter
-            return (
-              <TimelineItem key={slug}>
-                <TimelineOppositeContent
-                  className={timelineOpposite}
-                  sx={{ m: 'auto 0' }}
-                  variant="body2"
-                >
-                  <time dateTime={date}>{formatDate(date)}</time>
-                </TimelineOppositeContent>
-                <TimelineSeparator>
-                  <TimelineConnector />
-                  <AccessTimeFilledIcon sx={{ fontSize: 14 }} />
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <Badge type={type}></Badge>
-                  <Typography variant="h6" component="span">
-                    <Link href={link ? link : `/blog/${slug}`}>{title}</Link>
-                  </Typography>
-                  <Typography>{summary}</Typography>
-                </TimelineContent>
-              </TimelineItem>
-            )
-          })}
+        <Timeline sx={{ pt: 5 }}>
+          {posts.slice(0, MAX_DISPLAY).map((frontMatter) => (
+            <TimelineElement frontMatter={frontMatter} key={frontMatter.slug}></TimelineElement>
+          ))}
         </Timeline>
       </div>
       {/* siteMetadata.newsletter.provider !== '' && (
@@ -147,10 +157,6 @@ export default function Home({ posts }) {
     </>
   )
 }
-
-const timelineOpposite = css`
-  flex: 0.2;
-`
 
 const badgeContainer = css`
   display: flex;
