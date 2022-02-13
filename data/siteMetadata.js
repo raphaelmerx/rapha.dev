@@ -5,8 +5,8 @@ const siteMetadata = {
   description:
     'A software engineer turned development worker. Governance tech at the office, with language tech projects on the side.',
   language: 'en-us',
-  siteUrl: 'https://raphaelmerx.vercel.app',
-  siteRepo: 'https://github.com/raphaelmerx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://rapha.dev',
+  siteRepo: 'https://github.com/raphaelmerx/rapha.dev',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
