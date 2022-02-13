@@ -28,8 +28,6 @@ import { alpha } from '@mui/material/styles'
 
 import NewsletterForm from '@/components/NewsletterForm'
 
-const MAX_DISPLAY = 5
-
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
 
@@ -37,68 +35,40 @@ export async function getStaticProps() {
 }
 
 function Badge(props) {
-  const getContent = (type) => {
+  const getData = (type) => {
     switch (type) {
       case 'NewProject':
-        return 'New Project update'
+        return { text: 'New Project update', icon: 'la-code', color: blue }
       case 'Job':
-        return 'Started a new job'
+        return { text: 'Started a new job', icon: 'la-briefcase', color: blue }
       case 'Blog':
-        return 'Wrote a Blog Post'
+        return { text: 'Wrote a Blog Post', icon: 'la-pencil-alt', color: red }
       case 'Speaking':
-        return 'Spoke at an Event'
+        return { text: 'Spoke at an Event', icon: 'la-microphone', color: green }
       default:
-        return 'coucou'
+        return { text: 'coucou', icon: 'la-dog', color: red }
     }
   }
-  const getIcon = (type) => {
-    switch (type) {
-      case 'NewProject':
-        return 'la-code'
-      case 'Job':
-        return 'la-briefcase'
-      case 'Blog':
-        return 'la-pencil-alt'
-      case 'Speaking':
-        return 'la-microphone'
-      default:
-        return 'la-dog'
-    }
-  }
-  const getColor = (type) => {
-    switch (type) {
-      case 'NewProject':
-        return blue
-      case 'Job':
-        return blue
-      case 'Blog':
-        return red
-      case 'Speaking':
-        return green
-      default:
-        return red
-    }
-  }
-  const color = getColor(props.type)
-  const backgroundColor = alpha(getColor(props.type)[100], 0.1)
+  const { text, icon, color } = getData(props.type)
+  const backgroundColor = alpha(color[100], 0.1)
   return (
-    <Box class="badge-container mw-100" className={badgeContainer}>
+    <Box className="badge-container mw-100">
       <Box
         component="span"
         style={{ color: color[500], backgroundColor: backgroundColor }}
         sx={{ py: 0.5, px: 1.5, borderRadius: 1, fontWeight: 500, fontSize: 14 }}
       >
         <Box component="span" sx={{ mr: 1 }}>
-          <i className={'las ' + getIcon(props.type)}></i>
+          <i className={'las ' + icon}></i>
         </Box>
-        {getContent(props.type)}
+        {text}
       </Box>
     </Box>
   )
 }
 
 function TimelineElement(props) {
-  const { slug, date, title, summary, tags, type, link } = props.frontMatter
+  const { slug, date, title, summary, tags, badge, link, blog } = props.frontMatter
 
   const dateElement = (
     <Typography variant="caption">
@@ -119,12 +89,22 @@ function TimelineElement(props) {
         <TimelineConnector />
       </TimelineSeparator>
       <TimelineContent sx={{ pb: '12px', pt: 0, px: 2, mb: 10, mt: -1 }}>
-        <Badge type={type}></Badge>
+        <Badge type={badge}></Badge>
         <Box sx={{ py: 1, display: { sm: 'none' } }}>{dateElement}</Box>
         <Typography variant="h5" sx={{ my: 1, fontWeight: 700 }}>
           <Link href={link ? link : `/blog/${slug}`}>{title}</Link>
         </Typography>
-        <Typography>{summary}</Typography>
+        {summary}{' '}
+        {blog && (
+          <div className="text-base font-medium leading-6">
+            <Link
+              href={`/blog/${slug}`}
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+            >
+              Read more &rarr;
+            </Link>
+          </div>
+        )}
       </TimelineContent>
     </TimelineItem>
   )
@@ -144,7 +124,7 @@ export default function Home({ posts }) {
           </p>
         </div>
         <Timeline sx={{ pt: 5 }}>
-          {posts.slice(0, MAX_DISPLAY).map((frontMatter) => (
+          {posts.map((frontMatter) => (
             <TimelineElement frontMatter={frontMatter} key={frontMatter.slug}></TimelineElement>
           ))}
         </Timeline>
@@ -157,7 +137,3 @@ export default function Home({ posts }) {
     </>
   )
 }
-
-const badgeContainer = css`
-  display: flex;
-`

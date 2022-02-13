@@ -39,30 +39,6 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div className="pt-10 pb-8 prose dark:prose-dark max-w-none">{children}</div>
             </div>
             <Comments frontMatter={frontMatter} />
-            <footer>
-              <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                {prev && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/blog/${prev.slug}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    >
-                      &larr; {prev.title}
-                    </Link>
-                  </div>
-                )}
-                {next && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/blog/${next.slug}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    >
-                      {next.title} &rarr;
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </footer>
           </div>
         </div>
       </article>

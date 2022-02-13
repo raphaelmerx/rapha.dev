@@ -1,8 +1,9 @@
 ---
-title: Balinese spell checker
+title: Nested routes
 date: '2022-01-10'
 tags: ['language-tech', 'side-project']
-draft: false
+draft: true
+blog: true
 summary: 'A webapp to fix Balinese text spelling, built in partnership with the WikiPustaka (Balinese Wikisource) community. Can also guess where to put spaces in text transliterated from the Balinese alphabet to the Latin alphabet. '
 type: NewProject
 link: https://balinese-spell.netlify.app/
