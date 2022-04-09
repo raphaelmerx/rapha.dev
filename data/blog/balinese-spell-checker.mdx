@@ -4,7 +4,7 @@ date: '2022-01-10'
 tags: ['language-tech', 'side-project']
 draft: false
 blog: true
-summary: 'A webapp to fix Balinese text spelling, built in partnership with the WikiPustaka (Balinese Wikisource) community. Useful to fix text transliterated from the Balinese alphabet to the Latin alphabet. '
+summary: 'A webapp to fix Balinese text spelling, built in partnership with the Balinese Wikisource (WikiPustaka) community. Useful to fix text transliterated from the Balinese alphabet to the Latin alphabet. '
 badge: NewProject
 link: https://balinese-spell.netlify.app/
 layout: PostSimple
@@ -23,7 +23,7 @@ To produce legible Balinese in the Latin alphabet, we need to guess where spaces
 ## Our solution: a space fixer + a spell checker
 
 So we embarked on a small project teaching a model to guess spaces in Balinese text.
-Using SymSpell trained on Balinese text scraped from the Balinese Wikipedia, we put together a first version of our "Balinese space fixer":
+Using text from Balinese Wikipedia, we train SymSpell to put together a first version of our webapp, until then called "Balinese space fixer":
 
 <div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
   <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2 text-center">
@@ -36,8 +36,8 @@ Using SymSpell trained on Balinese text scraped from the Balinese Wikipedia, we 
   </div>
 </div>
 
-Later on, we expanded this tool to also make spelling corrections.
-And added a way for the community to fix bad spelling suggested by the system. And thus the "Balinese Spell Checker" was born:
+Later on, we expanded this tool to also make spelling corrections: it doesn't just add missing spaces, but also fixes the spelling of individual words.
+To let the app improve itself over time, we added a way for users to suggest a better spelling.
 
 <div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
   <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2 text-center">
@@ -55,7 +55,7 @@ The tool can be accessed at https://balinese-spell.netlify.app/, with its source
 
 ## What's next?
 
-To assist the WikiPustaka community, which is so far manually transcribing lontar, we would love to create a reasonable quality OCR engine for Balinese manuscripts.
+To assist the WikiPustaka community, which is so far manually transcribing lontar images, we would love to create a quality HTR (handwriting text recognition) engine for Balinese manuscripts.
 I'm looking into using [eScriptorium](https://escriptorium.inria.fr/) and [kraken](http://kraken.re/master/index.html) to do so.
 
 In the longer-term, a translation engine between Indonesian and Balinese would be great.
