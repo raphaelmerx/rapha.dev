@@ -9,7 +9,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/raphaelmerx/rapha.dev',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/twitter-card.jpg',
   email: '',
   github: 'https://github.com/raphaelmerx',
   twitter: 'https://twitter.com/raphaelmerx',
