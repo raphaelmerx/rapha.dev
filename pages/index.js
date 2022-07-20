@@ -14,13 +14,6 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
 import TimelineDot from '@mui/lab/TimelineDot'
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled'
-import CodeIcon from '@mui/icons-material/Code'
-import WorkIcon from '@mui/icons-material/Work'
-import CreateIcon from '@mui/icons-material/Create'
-import LaptopMacIcon from '@mui/icons-material/LaptopMac'
-import HotelIcon from '@mui/icons-material/Hotel'
-import RepeatIcon from '@mui/icons-material/Repeat'
 import Typography from '@mui/material/Typography'
 import { css } from 'goober'
 import { blue, green, grey, red } from '@mui/material/colors'
@@ -85,7 +78,7 @@ function TimelineElement(props) {
         {dateElement}
       </TimelineOppositeContent>
       <TimelineSeparator>
-        <AccessTimeFilledIcon sx={{ fontSize: 14 }} />
+        <i className="las la-clock"></i>
         <TimelineConnector />
       </TimelineSeparator>
       <TimelineContent sx={{ pb: '12px', pt: 0, px: 2, mb: 10, mt: -1 }}>
