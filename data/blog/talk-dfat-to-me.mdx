@@ -1,0 +1,52 @@
+---
+title: Talk DFAT to me
+date: '2022-08-21'
+tags: ['language-tech', 'side-project']
+draft: false
+blog: true
+summary: 'An AI trained to write in the style of Australian Aid reports.'
+badge: NewProject
+link: https://talk-dfat-to-me.rapha.dev/
+layout: PostSimple
+---
+
+### Aid jargon - can you fake it?
+
+Reporting and communication in the aid world involves a lot of jargon. Terms like "capacity building" and "stakeholder engagement"
+will not evoke much to an outsider, but will be encountered multiple times in the day of an aid worker.
+
+Given how specific these terms are to the aid world, and how frequently they occur in aid reports, I thought it would be
+a fun project to train an AI model that writes like aid reports. More satire than useful, but fun nonetheless.
+
+I'm most familiar with reporting to DFAT (the Australian Dept of Foreign Affairs and Trade), and
+since "Talk DFAT to me" sounds better than "Talk World Bank to me", I focused on DFAT reports for this project.
+But don't see any
+
+### Training the AI
+
+So I embarked on a journey to train an existing language model (GPT-3) to write like DFAT reports. Roughly the process was as follow:
+
+1. Get the data: Download a range of reports from the https://dfat.gov.au/
+2. Clean the data: break reports into paragraphs, only keep paragraphs that are reasonably long.
+3. Produce training data with prompts (usually the first few words of each paragraph) and completion labels (the full paragraph)
+4. Train the model
+5. Put together a small website that gets user input (the first few words of a sentence) and communicates with the model to get text completions.
+
+### The result - promising but not always coherent
+
+Try it out at [talk-dfat-to-me.rapha.dev](https://talk-dfat-to-me.rapha.dev/): you give your report a title (so the model gets some context), enter a few words,
+click "Expand", and it continues writing your sentence / paragraph in aid jargon!
+
+<div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+  <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2 text-center">
+    <video
+      controls
+      alt="talk dfat to me demo"
+      src="/static/images/talk-dfat-demo_6.mp4"
+      width={460}
+      height={305}
+    ></video>
+  </div>
+</div>
+
+While fun, the model isn't really useful, because 1. the model has no idea of factual accuracy (will make up stats as it pleases!) and 2. it's incoherent past the paragraph level, as it doesn't "remember" what it said a few paragraphs before.
