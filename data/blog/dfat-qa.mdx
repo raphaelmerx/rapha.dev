@@ -1,0 +1,59 @@
+---
+title: Q&A on DFAT reports, powered by AI
+date: '2023-04-22'
+tags: ['language-tech', 'side-project']
+draft: false
+blog: true
+summary: 'Think chatGPT, but backed by hundreds of reports, and citing its sources. Reports from the DFAT (Australian Dept of Foreign Affairs) website'
+badge: NewProject
+link: https://dfat-qa.rapha.dev/
+layout: PostSimple
+---
+
+### I don't like scrolling through documents
+
+And even less scrolling through a collection of documents.
+Yet this is what we're left with when searching for answers through a range of reports.
+Eventually though, after frantic scrolling and searching for keywords, we find the official text that we believe we can trust.
+
+At the other end of the spectrum, ChatGPT gives quick responses through a friendly interface,
+but it sometimes makes up facts, and its data is almost two years old.
+
+Can't we have a middle-ground? Keep the friendly Q&A format, but use only trusted reports as sources?
+
+### Compiling the data
+
+For this exercise, I'm using all reports from DFAT (Australian Dept of Foreign Affairs) since 2020 as data source - together around 350 documents in PDF format.
+
+We compile our database of sources by:
+
+1. Scraping PDF documents from https://dfat.gov.au
+2. Extracting their text through the Python `unstructured` library
+3. Splitting each PDF into chunks of 1,000 characters. From 350 PDF documents, we end up with ~40,000 chunks total.
+4. Creating a [vector embedding](https://platform.openai.com/docs/guides/embeddings) for each chunk
+5. Store each chunk and its embedding in a vector database using [faiss](https://github.com/facebookresearch/faiss).
+
+### Responding to questions
+
+Given a question, we attempt to produce an answer backed by sources by:
+
+1. Producing an embedding for the question
+2. Retrieving the 5 document chunks whose embedding is closest to the question.
+3. Passing both the question and the top 5 chunks to ChatGPT through the API, and ask nicely to produce an answer.
+
+We're left with a system that works relatively well when the answer can be sourced from specific chunks.
+For broad questions that would require a lot of reading to get a response, the setup works a lot less well, because we're always limited to 5 chunks.
+
+### Deployment
+
+The above setup is deployed to an API (learned myself some fastAPI for the occasion), and connected to a React frontend deployed through Vercel.
+
+And voilà:
+
+<div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+  <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2 text-center">
+    <Image alt="spacefixer" src="/static/images/dfat_qa_fiji.jpg" width={600} height={450} />
+  </div>
+</div>
+
+If you have comments, or ideas about where a similar setup would be useful, reach out!
