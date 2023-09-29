@@ -1,0 +1,37 @@
+---
+title: 'tetun.org: more languages, more users'
+date: '2023-09-29'
+tags: ['language-tech', 'side-project']
+draft: false
+blog: true
+summary: 'Added Indonesian, Portuguese, and even Tok Pisin (in beta) to tetun.org! Also passed 60,000 monthly active users.'
+badge: NewProject
+link: https://play.google.com/store/apps/details?id=org.tetun.tetunorg&gl=tl
+layout: PostSimple
+---
+
+### Adding more languages
+
+One of the most common requests I got from tetun.org users was: could you add Portuguese ↔️ Tetun translation? As close second: could you add Indonesian too?
+
+This is easy to address in theory (just use English as pivot), but my little server translating close to 100,000 sentences a day was already crowded, and short on memory, so I didn't dare adding more models to the mix.
+
+My hand was forced however when usage rose, such that people were getting response times close to 30s (!) at peak time in the evenings. I had to optimise translation speed and memory usage, even to just keep supporting English.
+
+[Knowledge distillation](https://en.wikipedia.org/wiki/Knowledge_distillation) to the rescue! I used my larger model to generate synthetic data, mixed it with my main dataset (after marking it to let the new model differentiate between the original vs synthetic data), and trained a new, smaller model that performs surprisingly well despite its small size.
+
+This new model was a good 5x faster than the former, on top of requiring a lot less memory. Now that I had freed up resources, the server had space for Portuguese and Indonesian. Which were added in July 2023.
+
+What about Tok Pisin? I've been trying my hand at training an English ↔️ Tok Pisin model. While not as good quality as the Tetun one, I wanted to let others try it, so I put this one online too.
+
+### An update on usage
+
+The bright side of the load problems is that tetun.org serves more users than ever. We passed 100,000 downloads on the Google Play Store (and 50,000 monthly active Android users), plus around 20,000 monthly active users on the website. iOS usage is still marginal at around 1,000 app installs per month.
+
+Going by who requests help on our [Facebook page](https://www.facebook.com/tetun.org/), most users are Timorese students using it for educational purposes. That checks out with usage peaks in the evenings, when office workers are off but students do their homework.
+
+<div className="flex flex-wrap -mx-2 overflow-hidden xl:-mx-2">
+  <div className="my-1 px-2 w-full overflow-hidden xl:my-1 xl:px-2 xl:w-1/2 text-center">
+    <Image alt="spacefixer" src="/static/images/tetun org android.jpg" width={700} height={400} />
+  </div>
+</div>
