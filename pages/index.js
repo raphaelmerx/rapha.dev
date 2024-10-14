@@ -38,6 +38,8 @@ function Badge(props) {
         return { text: 'Wrote a Blog Post', icon: 'la-pencil-alt', color: red }
       case 'Speaking':
         return { text: 'Spoke at an Event', icon: 'la-microphone', color: green }
+      case 'Paper':
+        return { text: 'Published a Paper', icon: 'la-file-alt', color: red }
       default:
         return { text: 'coucou', icon: 'la-dog', color: red }
     }
