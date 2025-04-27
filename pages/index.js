@@ -4,6 +4,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
+import { publications } from '@/data/publications'
 
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
@@ -118,6 +119,49 @@ export default function Home({ posts }) {
             {siteMetadata.description}
           </p>
         </div>
+
+        {/* Publications Section */}
+        <div className="pt-10">
+          <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14 mb-8">
+            Publications
+          </h2>
+          <div className="space-y-6">
+            {publications.map((pub, index) => (
+              <div
+                key={index}
+                className="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-2 items-baseline"
+              >
+                <div className="text-gray-500 dark:text-gray-400">{pub.date}</div>
+                <div>
+                  <div>
+                    <span className="font-bold">Merx, R.</span>
+                    {pub.authors.replace('Merx, R.', '')}
+                  </div>
+                  <div className="font-medium">
+                    <Link
+                      href={pub.link}
+                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                    >
+                      {pub.title}
+                    </Link>
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400">
+                    {pub.venue}
+                    {pub.award && (
+                      <span className="ml-2 text-xs font-semibold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full">
+                        {pub.award}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14 mb-8">
+          Timeline
+        </h2>
         <Timeline sx={{ pt: 5 }}>
           {posts.map((frontMatter) => (
             <TimelineElement frontMatter={frontMatter} key={frontMatter.slug}></TimelineElement>
