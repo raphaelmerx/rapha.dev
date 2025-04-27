@@ -128,6 +128,28 @@ export default function Home({ posts }) {
           </p>
         </div>
 
+        {/* About Section */}
+        <div className="py-8">
+          <Heading>About</Heading>
+          <div className="prose dark:prose-dark">
+            <p className="mb-2">
+              I'm a PhD student in Natural Language Processing (NLP) at the University of Melbourne,
+              and a Technical Lead at <Link href="https://catalpa.io">Catalpa International</Link>.
+              I got into NLP through my side project tetun.org (read more in{' '}
+              <Link href="https://arxiv.org/abs/2411.12262">our paper</Link>).
+            </p>
+            <p className="mb-2">
+              Previously, I worked in technology for the aid sector at Catalpa, in various positions
+              (backend eng / full-stack / technical product manager / head of governance and
+              transparency). I started my career at Captricity in California.
+            </p>
+            <p>
+              I'm passionate about making tech accessible, useful, and pleasant to use. I believe
+              this starts with listening.
+            </p>
+          </div>
+        </div>
+
         {/* Publications Section */}
         <div className="py-8">
           <Heading>Publications</Heading>

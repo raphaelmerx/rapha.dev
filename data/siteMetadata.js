@@ -2,8 +2,7 @@ const siteMetadata = {
   title: 'Raphaël Merx',
   author: 'Raphaël Merx',
   headerTitle: '',
-  description:
-    'A software engineer turned aid worker. Tech, languages, governance, in no particular (world) order',
+  description: 'A software engineer turned aid worker turned NLP researcher.',
   language: 'en-us',
   siteUrl: 'https://rapha.dev',
   siteRepo: 'https://github.com/raphaelmerx/rapha.dev',
