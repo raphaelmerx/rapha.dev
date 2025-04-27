@@ -1,9 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'tailwindcss';
 
 .task-list-item:before {
-  @apply hidden;
+  @reference hidden;
 }
 
 html {

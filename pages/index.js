@@ -84,7 +84,7 @@ function TimelineElement(props) {
         <i className="las la-clock"></i>
         <TimelineConnector />
       </TimelineSeparator>
-      <TimelineContent sx={{ pb: '12px', pt: 0, px: 2, mb: 10, mt: -1 }}>
+      <TimelineContent sx={{ pb: '12px', pt: 0, px: 2, mb: 5, mt: -1 }}>
         <Badge type={badge}></Badge>
         <Box sx={{ py: 1, display: { sm: 'none' } }}>{dateElement}</Box>
         <Typography variant="h5" sx={{ my: 1, fontWeight: 700 }}>
@@ -106,6 +106,14 @@ function TimelineElement(props) {
   )
 }
 
+function Heading({ children }) {
+  return (
+    <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14 mb-8">
+      {children}
+    </h2>
+  )
+}
+
 export default function Home({ posts }) {
   return (
     <>
@@ -121,16 +129,11 @@ export default function Home({ posts }) {
         </div>
 
         {/* Publications Section */}
-        <div className="pt-10">
-          <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14 mb-8">
-            Publications
-          </h2>
+        <div className="py-8">
+          <Heading>Publications</Heading>
           <div className="space-y-6">
             {publications.map((pub, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-2 items-baseline"
-              >
+              <div key={index} className="grid sm:grid-cols-[8rem_1fr] gap-2 items-baseline">
                 <div className="text-gray-500 dark:text-gray-400">{pub.date}</div>
                 <div>
                   <div>
@@ -158,15 +161,14 @@ export default function Home({ posts }) {
             ))}
           </div>
         </div>
-
-        <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14 mb-8">
-          Timeline
-        </h2>
-        <Timeline sx={{ pt: 5 }}>
-          {posts.map((frontMatter) => (
-            <TimelineElement frontMatter={frontMatter} key={frontMatter.slug}></TimelineElement>
-          ))}
-        </Timeline>
+        <div className="py-8">
+          <Heading>Timeline</Heading>
+          <Timeline>
+            {posts.map((frontMatter) => (
+              <TimelineElement frontMatter={frontMatter} key={frontMatter.slug}></TimelineElement>
+            ))}
+          </Timeline>
+        </div>
       </div>
       {/* siteMetadata.newsletter.provider !== '' && (
         <div className="flex items-center justify-center pt-4">
