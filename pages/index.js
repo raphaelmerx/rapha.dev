@@ -5,6 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
 import { publications } from '@/data/publications'
+import projectsData from '@/data/projectsData'
 
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
@@ -175,6 +176,38 @@ export default function Home({ posts }) {
             ))}
           </div>
         </div>
+
+        {/* Projects Section */}
+        <div className="py-8">
+          <Heading>Projects</Heading>
+          <div className="space-y-6">
+            {projectsData.map((project, index) => (
+              <div key={index} className="grid sm:grid-cols-[8rem_1fr] gap-2 items-baseline">
+                <div className="text-gray-500 dark:text-gray-400">{project.date}</div>
+                <div>
+                  <div className="font-medium">
+                    <Link
+                      href={project.href}
+                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                    >
+                      {project.title}
+                    </Link>
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400">{project.description}</div>
+                </div>
+              </div>
+            ))}
+            {/* <div className="text-right mt-2">
+              <Link 
+                href="/projects"
+                className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+              >
+                View all projects →
+              </Link>
+            </div> */}
+          </div>
+        </div>
+
         <div className="py-8">
           <Heading>Timeline</Heading>
           <Timeline>

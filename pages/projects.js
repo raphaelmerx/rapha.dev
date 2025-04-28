@@ -1,6 +1,6 @@
 import siteMetadata from '@/data/siteMetadata'
 import projectsData from '@/data/projectsData'
-import Card from '@/components/Card'
+import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
 
 export default function Projects() {
@@ -13,19 +13,56 @@ export default function Projects() {
             Projects
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            Showcase your projects with a hero image (16 x 9)
+            Key projects I've worked on throughout my career
           </p>
         </div>
-        <div className="container py-12">
-          <div className="flex flex-wrap -m-4">
-            {projectsData.map((d) => (
-              <Card
-                key={d.title}
-                title={d.title}
-                description={d.description}
-                imgSrc={d.imgSrc}
-                href={d.href}
-              />
+        <div className="py-12">
+          <div className="space-y-10">
+            {projectsData.map((project) => (
+              <div key={project.title} className="grid md:grid-cols-[200px_1fr] gap-4">
+                {project.imgSrc && (
+                  <div className="overflow-hidden rounded-lg">
+                    <img
+                      src={project.imgSrc}
+                      alt={project.title}
+                      className="object-cover w-full h-40 transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                )}
+
+                <div className="flex flex-col">
+                  <div className="flex justify-between items-baseline mb-1">
+                    <h2 className="text-2xl font-bold">
+                      {project.href ? (
+                        <Link
+                          href={project.href}
+                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                        >
+                          {project.title}
+                        </Link>
+                      ) : (
+                        project.title
+                      )}
+                    </h2>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{project.date}</span>
+                  </div>
+
+                  <p className="text-gray-700 dark:text-gray-300 mb-2">{project.description}</p>
+
+                  {project.technologies && (
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
         </div>
