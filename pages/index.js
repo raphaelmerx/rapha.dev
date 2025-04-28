@@ -123,15 +123,7 @@ export default function Home({ posts }) {
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Raphaël Merx
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            {siteMetadata.description}
-          </p>
-        </div>
-
-        {/* About Section */}
-        <div className="py-8">
-          <Heading>About</Heading>
-          <div className="prose dark:prose-dark">
+          <div className="text-md leading-7 text-gray-700 dark:text-gray-200">
             <p className="mb-2">
               I'm a PhD student in Natural Language Processing (NLP) at the University of Melbourne,
               and a Technical Lead at <Link href="https://catalpa.io">Catalpa International</Link>.
