@@ -13,8 +13,9 @@ export const publications: Publication[] = [
     authors: 'Merx, R., Correia, A. J. G., Suominen, H. & Vylomova, E.',
     title:
       'Low-resource Machine Translation: what for? who for? An observational study on a dedicated Tetun language translation service.',
-    venue: 'Accepted at LoResMT 2025',
-    link: 'https://arxiv.org/html/2411.12262',
+    venue:
+      'Eighth Workshop on Technologies for Machine Translation of Low-Resource Languages (LoResMT 2025) @ NAACL',
+    link: 'https://aclanthology.org/2025.loresmt-1.7/',
   },
   {
     date: '12/2024',
@@ -22,7 +23,7 @@ export const publications: Publication[] = [
     title:
       'Generating bilingual example sentences with large language models as lexicography assistants.',
     venue:
-      'in Proceedings of the 22nd Annual Workshop of the Australasian Language Technology Association (Association for Computational Linguistics, Canberra, Australia, 2024)',
+      '22nd Annual Workshop of the Australasian Language Technology Association (Association for Computational Linguistics, Canberra, Australia, 2024)',
     link: 'https://aclanthology.org/2024.alta-1.5/',
     award: 'Best Paper Award',
   },
