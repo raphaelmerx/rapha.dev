@@ -5,6 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import formatDate from '@/lib/utils/formatDate'
 import { publications } from '@/data/publications'
+import { workExperience } from '@/data/workExperience'
 import projectsData from '@/data/projectsData'
 
 import Container from '@mui/material/Container'
@@ -171,6 +172,36 @@ export default function Home({ posts }) {
                       </span>
                     )}
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Work Experience Section */}
+        <div className="py-8">
+          <Heading>Work Experience</Heading>
+          <div className="space-y-6">
+            {workExperience.map((job, index) => (
+              <div key={index} className="grid sm:grid-cols-[8rem_1fr] gap-2 items-baseline">
+                <div className="text-gray-500 dark:text-gray-400">{job.date}</div>
+                <div>
+                  <div className="font-medium">
+                    {job.link ? (
+                      <Link
+                        href={job.link}
+                        className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                      >
+                        {job.position}
+                      </Link>
+                    ) : (
+                      <span>{job.position}</span>
+                    )}
+                  </div>
+                  <div className="text-gray-700 dark:text-gray-300">
+                    {job.company}, {job.location}
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400">{job.description}</div>
                 </div>
               </div>
             ))}
