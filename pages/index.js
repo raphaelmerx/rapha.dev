@@ -127,9 +127,9 @@ export default function Home({ posts }) {
           </h1>
           <div className="text-md leading-7 text-gray-700 dark:text-gray-200">
             <p className="mb-2">
-              I'm a PhD student in Natural Language Processing (NLP) at the University of Melbourne,
-              and a Technical Lead at <Link href="https://catalpa.io">Catalpa International</Link>.
-              I got into NLP through my side project tetun.org (read more in{' '}
+              I'm a PhD student in Machine Learning at the University of Melbourne, and a Technical
+              Lead at <Link href="https://catalpa.io">Catalpa International</Link>. I got into ML
+              through my side project tetun.org (read more in{' '}
               <Link href="https://arxiv.org/abs/2411.12262">our paper</Link>).
             </p>
             <p className="mb-2">
