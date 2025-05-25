@@ -153,8 +153,14 @@ export default function Home({ posts }) {
                 <div className="text-gray-500 dark:text-gray-400">{pub.date}</div>
                 <div>
                   <div>
-                    <span className="font-bold">Merx, R.</span>
-                    {pub.authors.replace('Merx, R.', '')}
+                    {pub.authors.split(', ').map((author, i) => (
+                      <span key={i}>
+                        {i > 0 && ', '}
+                        <span className={author.includes('R Merx') ? 'font-bold' : ''}>
+                          {author}
+                        </span>
+                      </span>
+                    ))}
                   </div>
                   <div className="font-medium">
                     <Link

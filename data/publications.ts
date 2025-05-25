@@ -9,17 +9,33 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
+    date: '07/2025',
+    authors: 'R Merx, H Suominen, L Hong, N Thieberger, T Cohn, E Vylomova',
+    title: 'Tulun: Transparent and Adaptable Low-resource Machine Translation',
+    venue: 'ACL System Demonstration',
+    link: 'arxiv',
+  },
+  {
+    date: '07/2025',
+    authors: 'N Baes, R Merx, N Haslam, E Vylomova, H Dubossarsky',
+    title:
+      'A General Framework to Evaluate Methods for Assessing Dimensions of Lexical Semantic Change Using LLM-Generated Synthetic Data',
+    venue: 'ACL Findings',
+    link: 'https://arxiv.org/abs/2503.08042',
+  },
+  {
     date: '05/2025',
-    authors: 'Merx, R., Correia, A. J. G., Suominen, H. & Vylomova, E.',
+    authors: 'R Merx, A J G Correia, H Suominen, E Vylomova',
     title:
       'Low-resource Machine Translation: what for? who for? An observational study on a dedicated Tetun language translation service.',
     venue:
       'Eighth Workshop on Technologies for Machine Translation of Low-Resource Languages (LoResMT 2025) @ NAACL',
     link: 'https://aclanthology.org/2025.loresmt-1.7/',
+    award: 'Nominated for Best Paper Award',
   },
   {
     date: '12/2024',
-    authors: 'Merx, R., Vylomova, E. & Kurniawan, K.',
+    authors: 'R Merx, E Vylomova, K Kurniawan',
     title:
       'Generating bilingual example sentences with large language models as lexicography assistants.',
     venue:
@@ -29,7 +45,7 @@ export const publications: Publication[] = [
   },
   {
     date: '08/2024',
-    authors: 'Merx, R., Phillips, C. & Suominen, H.',
+    authors: 'R Merx, C Phillips, H Suominen',
     title: 'Machine Translation Technology in Health: A Scoping Review',
     venue:
       'in Health. Innovation. Community: It Starts With Us 78–83 (IOS Press, 2024). doi:10.3233/SHTI240895',
@@ -37,7 +53,7 @@ export const publications: Publication[] = [
   },
   {
     date: '03/2024',
-    authors: 'Merx, R., Mahmudi, A., Langford, K., de Araujo, L. A. & Vylomova, E.',
+    authors: 'R Merx, A Mahmudi, K Langford, L A de Araujo, E Vylomova',
     title:
       'Low-Resource Machine Translation through Retrieval-Augmented LLM Prompting: A Study on the Mambai Language',
     venue:
