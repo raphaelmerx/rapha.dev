@@ -13,7 +13,7 @@ export const publications: Publication[] = [
     authors: 'R Merx, H Suominen, L Hong, N Thieberger, T Cohn, E Vylomova',
     title: 'Tulun: Transparent and Adaptable Low-resource Machine Translation',
     venue: 'ACL System Demonstration',
-    link: 'arxiv',
+    link: 'http://arxiv.org/abs/2505.18683',
   },
   {
     date: '07/2025',
